@@ -120,6 +120,11 @@
             bindings = <&kp ENTER>;
             key-positions = <21 20>;
         };
+
+        combo_esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <2 1>;
+        };
     };
 
     keymap {
