@@ -22,7 +22,7 @@
 
 &mt {
     tapping-term-ms = <200>;
-    flavor = "tap-preferred";
+    flavor = "tap-unless-interrupted";
 };
 
 / {
@@ -138,7 +138,7 @@
             bindings = <
 &none  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5    &kp NUMBER_6  &kp N7    &kp N8  &kp N9  &kp N0  &none
 &none  &none         &none         &none         &none         &none     &none         &none     &none   &none   &none   &none
-&none  &kp SUPER2    &none         &none         &none         &none     &none         &none     &none   &none   &none   &none
+&none  &none         &none         &none         &none         &none     &none         &none     &none   &none   &none   &none
                                    &trans        &trans        &trans    &trans        &mo FUNC  &trans
             >;
         };
