@@ -29,7 +29,7 @@
     flavor = "hold-preferred";
 };
 
-&mwh { time-to-max-speed-ms = <50>; };
+&msc { time-to-max-speed-ms = <50>; };
 
 &mmv { acceleration-exponent = <2>; };
 
