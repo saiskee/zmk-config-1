@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#define ZMK_MOUSE_DEFAULT_MOVE_VAL 1500  // 600
+
 #include <behaviors/mouse_move.dtsi>
 #include <behaviors/mouse_key_press.dtsi>
 #include <behaviors/mouse_scroll.dtsi>
@@ -31,7 +33,7 @@
 
 &msc { time-to-max-speed-ms = <50>; };
 
-&mmv { acceleration-exponent = <2>; };
+&mmv { acceleration-exponent = <1>; };
 
 / {
     behaviors {
