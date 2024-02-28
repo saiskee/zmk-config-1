@@ -53,12 +53,12 @@
 
         combo_tilde {
             bindings = <&kp TILDE>;
-            key-positions = <2 3>;
+            key-positions = <2 1>;
         };
 
         combo_tab {
             bindings = <&kp TAB>;
-            key-positions = <15 14>;
+            key-positions = <14 13>;
         };
 
         combo_bksp {
