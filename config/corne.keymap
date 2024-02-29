@@ -130,6 +130,11 @@
             bindings = <&kp ENTER>;
             key-positions = <21 20>;
         };
+
+        settings_layer {
+            bindings = <&mo 3>;
+            key-positions = <13 14 15 16 17>;
+        };
     };
 
     keymap {
@@ -159,6 +164,15 @@
 &none  &kp LEFT_SHIFT  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none       &none       &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &none    &none
 &none  &kp LEFT_SHIFT  &bt BT_SEL 0    &bt BT_SEL 2    &bt BT_CLR_ALL   &trans      &kp C_MUTE  &kp C_VOL_DN    &kp C_VOLUME_UP  &trans           &trans   &none
                                        &trans          &kp LEFT_ALT     &kp LGUI    &mkp LCLK   &mkp RCLK       &trans
+            >;
+        };
+
+        setup_layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &bt BT_CLR_ALL  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans        &trans        &trans  &trans  &bootloader     &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans        &trans        &trans  &trans  &trans          &trans
+                        &trans  &trans  &trans    &trans        &trans        &trans
             >;
         };
     };
