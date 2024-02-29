@@ -155,7 +155,7 @@
 
         func_layer {
             bindings = <
-&none  &kp F1          &msc SCRL_LEFT  &kp UP_ARROW    &msc SCRL_RIGHT  &kp F6       &msc SCRL_UP      &mmv MOVE_UP    &msc SCRL_DOWN   &kp F10          &none
+&none  &kp F1          &msc SCRL_LEFT  &kp UP_ARROW    &msc SCRL_RIGHT  &none        &none             &msc SCRL_UP    &mmv MOVE_UP     &msc SCRL_DOWN   &kp F10
 &none  &kp LEFT_SHIFT  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none        &mmv MOVE_LEFT    &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp RIGHT_SHIFT  &none
 &none  &kp LEFT_SHIFT  &bt BT_SEL 0    &bt BT_SEL 2    &bt BT_NXT       &trans       &kp C_MUTE        &kp C_VOL_DN    &kp C_VOLUME_UP  &trans           &none
                                        &trans          &kp LEFT_COMMAND &mkp LCLK    &mkp RCLK         &trans          &trans
