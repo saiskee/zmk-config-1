@@ -31,7 +31,10 @@
     flavor = "hold-preferred";
 };
 
-&msc { time-to-max-speed-ms = <50>; };
+&msc { 
+    time-to-max-speed-ms = <50>;
+    acceleration-exponent = <1>;
+};
 
 &mmv { acceleration-exponent = <1>; };
 
