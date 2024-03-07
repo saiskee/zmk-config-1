@@ -141,7 +141,7 @@
 
         colemak_layer_tog {
             bindings = <&tog 4>;
-            key-positions = <13 14 15 16 17 18 19 20 21 22>;
+            key-positions = <30 6 10 34>;
         };
     };
 
