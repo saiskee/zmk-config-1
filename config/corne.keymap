@@ -68,7 +68,7 @@
 
         combo_tab {
             bindings = <&kp TAB>;
-            key-positions = <13 12>;
+            key-positions = <14 15>;
         };
 
         combo_bksp {
