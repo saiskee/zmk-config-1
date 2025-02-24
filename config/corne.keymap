@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // 600 was the default
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // 600 was the default
 
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
