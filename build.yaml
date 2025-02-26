@@ -24,3 +24,5 @@ include:
   - board: seeeduino_xiao_ble
     shield: corne_dongle
     snippet: zmk-usb-logging
+  - board: seeeduino_xiao_ble
+    shield: settings_reset
