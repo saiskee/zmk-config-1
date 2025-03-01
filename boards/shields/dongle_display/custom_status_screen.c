@@ -40,7 +40,7 @@ lv_obj_t *zmk_display_status_screen() {
   
   // Reposition bongo cat to be in the center of the screen
   zmk_widget_bongo_cat_init(&bongo_cat_widget, screen);
-  lv_obj_align(zmk_widget_bongo_cat_obj(&bongo_cat_widget), LV_ALIGN_CENTER, 0, 0);
+  lv_obj_align(zmk_widget_bongo_cat_obj(&bongo_cat_widget), LV_ALIGN_CENTER, 0, -60);
   
   // Keep modifiers at bottom left
   zmk_widget_modifiers_init(&modifiers_widget, screen);
