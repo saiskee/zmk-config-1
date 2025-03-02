@@ -77,7 +77,7 @@
      // Set the appropriate image based on current state
      switch (animation_state.state) {
          case STATE_IDLE:
-             lv_img_set_src(anim_img, &bongo_cat_both1_open);
+             lv_img_set_src(anim_img, &bongo_cat_none);
              break;
          case STATE_ACTIVE:
              lv_img_set_src(anim_img, &bongo_cat_both1);
