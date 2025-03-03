@@ -80,7 +80,7 @@
              lv_img_set_src(anim_img, &bongo_cat_both1_open);
              break;
          case STATE_ACTIVE:
-             lv_img_set_src(anim_img, &bongo_cat_both1);
+             lv_img_set_src(anim_img, &bongo_cat_none);
              break;
          case STATE_LEFT_ACTIVE:
              lv_img_set_src(anim_img, &bongo_cat_left2);
