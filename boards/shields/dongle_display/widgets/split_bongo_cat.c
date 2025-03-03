@@ -92,7 +92,7 @@
              lv_img_set_src(anim_img, &bongo_cat_both2);
              break;
          default:
-             lv_img_set_src(anim_img, &bongo_cat_both1_open);
+             lv_img_set_src(anim_img, &bongo_cat_none);
      }
  }
  
