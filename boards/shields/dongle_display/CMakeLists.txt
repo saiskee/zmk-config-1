@@ -9,6 +9,7 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM AND ((NOT CONF
     zephyr_library_sources(widgets/battery_status.c)
     zephyr_library_sources(widgets/split_bongo_cat.c)  # Added new widget
     zephyr_library_sources(widgets/bongo_cat_images.c)
+    zephyr_library_sources(widgets/key_info_widget.c)  # Added our new widget
     target_sources_ifdef(CONFIG_ZMK_HID_INDICATORS app PRIVATE widgets/hid_indicators.c)
     zephyr_library_sources(widgets/layer_status.c)
     zephyr_library_sources(widgets/modifiers.c)
