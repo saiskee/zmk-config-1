@@ -1,0 +1,7 @@
+config ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
+	bool "Enable custom status screen with bongo cat and position display"
+	depends on ZMK_DISPLAY
+	default y
+	help
+	  This option enables a custom status screen with a bongo cat animation
+	  that shows the current key position when keys are pressed.

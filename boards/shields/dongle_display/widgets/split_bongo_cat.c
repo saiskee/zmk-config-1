@@ -160,7 +160,7 @@
 
          // Determine if this is from left or right keyboard
          // The position can indicate which half it came from
-         if (position_event->position >= (6*4)) { // Assuming 6 columns and 3 rows for left side
+         if (position_event->position >= (6*3)) { // Assuming 6 columns and 3 rows for left side
              source = SPLIT_RIGHT;
          }
 
