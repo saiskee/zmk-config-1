@@ -36,6 +36,23 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+
+        td1: td1 {
+          compatible = "zmk,behavior-tap-dance";
+          label = "DOUBLE_TAP";
+          #binding-cells = <0>;
+          bindings = <&kp LCTRL>, <&kp LEFT_ALT>;
+      };
+
+      hm: homerow_mods {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOMEROW_MODS";
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        quick-tap-ms = <0>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+      };
     };
 
     rgb_encoder: rgb_encoder {
@@ -57,12 +74,12 @@
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&kp TAB    &kp Q  &kp W      &kp E     &kp R  &kp T                              &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&td0       &kp A  &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X      &kp C     &kp V  &kp B       &kp SPACE              &kp DOWN              &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                             &kp LGUI  &mo 1  &lt 3 SPACE                                              &lt 3 ENTER  &mo 2  &kp RALT
+&kp TAB    &hm ESC Q  &kp W      &kp E     &kp R  &kp T                              &kp UP                    &kp Y        &kp U  &kp I      &kp O    &kp P                  &kp BSPC
+&td0       &kp A      &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp RIGHT_ALT  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SQT                &kp SQT
+&kp LCTRL  &kp Z      &kp X      &kp C     &kp V  &kp B       &kp C_MUTE             &kp DOWN                  &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH  &kp ESC
+                                 &td1      &mo 1  &kp LGUI                                                     &kp SPACE    &kp BACKSPACE     &kp RIGHT_ALT
             >;
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         lower_layer {
@@ -73,7 +90,7 @@
 &trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
                                          &trans        &trans        &trans                                                                         &kp INS          &kp DEL          &trans
             >;
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
         raise_layer {
