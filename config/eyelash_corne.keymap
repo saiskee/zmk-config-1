@@ -55,6 +55,35 @@
       };
     };
 
+    combos {
+      compatible = "zmk,combos";
+
+      combo_tilde {
+          bindings = <&kp GRAVE>;
+          key-positions = <2 1>;
+      };
+
+      combo_tab {
+          bindings = <&kp TAB>;
+          key-positions = <14 15>;
+      };
+
+      combo_enter {
+          bindings = <&kp ENTER>;
+          key-positions = <21 20>;
+      };
+
+      settings_layer {
+          bindings = <&mo 3>;
+          key-positions = <13 14 15 16 17>;
+      };
+
+      colemak_layer_tog {
+          bindings = <&tog 4>;
+          key-positions = <30 6 10 34>;
+      };
+  };
+
     rgb_encoder: rgb_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
@@ -77,8 +106,8 @@
             display-name = "QWERTY";
             bindings = <
 &kp ESC    &hm ESC Q             &kp W      &kp E     &kp R  &kp T                              &kp UP                    &kp Y        &kp U  &kp I      &kp O    &kp P                  &kp BSPC
-&kp TAB    &kp A                 &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp RIGHT_ALT  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SQT                &kp SQT
-&kp LCTRL  &hm LEFT_SHIFT Z      &kp X      &kp C     &kp V  &kp B       &kp C_MUTE             &kp DOWN                  &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH  &kp ESC
+&kp TAB    &kp A                 &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp RIGHT_ALT  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SQT                &kp ENTER
+&kp LCTRL  &hm LEFT_SHIFT Z      &kp X      &kp C     &kp V  &kp B       &kp C_MUTE             &kp DOWN                  &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH  &kp RIGHT_SHIFT
                                             &td1      &mo 1  &kp LGUI                                                     &kp SPACE    &kp BACKSPACE     &kp RIGHT_ALT
             >;
             sensor-bindings = <&scroll_encoder>;
@@ -90,7 +119,7 @@
 &trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                        &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8            &kp N9           &kp N0          &trans
 &trans  &kp GRAVE        &kp MINUS       &kp EQUAL     &none         &none                         &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp SEMI         &kp SQT         &trans
 &trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &kp COMMA        &kp PERIOD        &kp SLASH        &kp LEFT_SHIFT  &trans
-                                         &trans        &trans        &trans                                                                         &trans           &kp BACKSPACE    &trans
+                                         &trans        &trans        &trans                                                                         &kp trans        &kp BACKSPACE    &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -116,6 +145,5 @@
             >;
             sensor-bindings = <&scroll_encoder>;
         };
-
     };
 };
