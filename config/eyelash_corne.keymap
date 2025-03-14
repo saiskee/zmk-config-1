@@ -57,12 +57,12 @@
 
         combo_tilde {
             bindings = <&kp GRAVE>;
-            key-positions = <2 1>;
+            key-positions = <1 2>;
         };
 
         combo_tab {
             bindings = <&kp TAB>;
-            key-positions = <14 15>;
+            key-positions = <16 15>;
         };
 
         combo_enter {
