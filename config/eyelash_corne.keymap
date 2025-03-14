@@ -68,16 +68,18 @@
         tap-ms = <100>;
     };
 
+
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&kp TAB    &hm ESC Q  &kp W      &kp E     &kp R  &kp T                              &kp UP                    &kp Y        &kp U  &kp I      &kp O    &kp P                  &kp BSPC
-&td0       &kp A      &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp RIGHT_ALT  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SQT                &kp SQT
-&kp LCTRL  &kp Z      &kp X      &kp C     &kp V  &kp B       &kp C_MUTE             &kp DOWN                  &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH  &kp ESC
-                                 &td1      &mo 1  &kp LGUI                                                     &kp SPACE    &kp BACKSPACE     &kp RIGHT_ALT
+&kp TAB    &hm ESC Q             &kp W      &kp E     &kp R  &kp T                              &kp UP                    &kp Y        &kp U  &kp I      &kp O    &kp P                  &kp BSPC
+&td0       &kp A                 &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp RIGHT_ALT  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SQT                &kp SQT
+&kp LCTRL  &hm LEFT_SHIFT Z      &kp X      &kp C     &kp V  &kp B       &kp C_MUTE             &kp DOWN                  &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH  &kp ESC
+                                            &td1      &mo 1  &kp LGUI                                                     &kp SPACE    &kp BACKSPACE     &kp RIGHT_ALT
             >;
             sensor-bindings = <&scroll_encoder>;
         };
