@@ -14,8 +14,8 @@ manifest:
     - name: zmk-dongle-display
       remote: englmaxi
       revision: main
-    - name: eyelash_corne
-      remote: zmk-new_corne
+    - name: zmk-new_corne
+      remote: a741725193
       revision: main
   self:
     path: config
