@@ -76,8 +76,8 @@
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&kp TAB    &hm ESC Q             &kp W      &kp E     &kp R  &kp T                              &kp UP                    &kp Y        &kp U  &kp I      &kp O    &kp P                  &kp BSPC
-&td0       &kp A                 &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp RIGHT_ALT  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SQT                &kp SQT
+&kp ESC    &hm ESC Q             &kp W      &kp E     &kp R  &kp T                              &kp UP                    &kp Y        &kp U  &kp I      &kp O    &kp P                  &kp BSPC
+&kp TAB    &kp A                 &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp RIGHT_ALT  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SQT                &kp SQT
 &kp LCTRL  &hm LEFT_SHIFT Z      &kp X      &kp C     &kp V  &kp B       &kp C_MUTE             &kp DOWN                  &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH  &kp ESC
                                             &td1      &mo 1  &kp LGUI                                                     &kp SPACE    &kp BACKSPACE     &kp RIGHT_ALT
             >;
@@ -87,10 +87,10 @@
         lower_layer {
             display-name = "NUMBER";
             bindings = <
-&trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                        &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8           &kp N9           &kp N0    &kp BSPC
-&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                           &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT        &kp HOME  &kp PG_UP
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
-                                         &trans        &trans        &trans                                                                         &kp INS          &kp DEL          &trans
+&trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                        &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8            &kp N9           &kp N0          &trans
+&trans  &kp GRAVE        &kp MINUS       &kp EQUAL     &none         &none                         &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp SEMI         &kp SQT         &trans
+&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &kp COMMA        &kp PERIOD        &kp SLASH        &kp LEFT_SHIFT  &trans
+                                         &trans        &trans        &trans                                                                         &kp trans        &kp BACKSPACE    &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
