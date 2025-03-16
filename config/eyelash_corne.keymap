@@ -108,10 +108,10 @@
         lower_layer {
             display-name = "NUMBER";
             bindings = <
-&trans  &kp N1           &kp N2          &kp N3     &kp N4  &kp N5                                         &mmv MOVE_UP                     &kp N6           &kp N7            &kp N8             &kp N9     &kp N0          &trans
-&trans  &kp GRAVE        &kp MINUS       &kp EQUAL  &none   &none                          &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SEMI   &kp SQT         &trans
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans     &trans  &rgb_ug RGB_EFF  &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &kp COMMA         &kp PERIOD         &kp SLASH  &kp LEFT_SHIFT  &trans
-                                         &trans     &trans  &trans                                                                          &trans           &kp BACKSPACE     &trans
+&trans  &kp N1     &kp N2           &kp N3          &kp N4  &kp N5                                         &mmv MOVE_UP                     &kp N6           &kp N7            &kp N8             &kp N9     &kp N0          &trans
+&trans  &kp GRAVE  &kp MINUS        &kp EQUAL       &none   &none                          &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SEMI   &kp SQT         &trans
+&trans  &trans     &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans  &rgb_ug RGB_EFF  &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &kp COMMA         &kp PERIOD         &kp SLASH  &kp LEFT_SHIFT  &trans
+                                    &trans          &trans  &trans                                                                          &trans           &kp BACKSPACE     &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
