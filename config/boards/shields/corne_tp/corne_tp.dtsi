@@ -11,6 +11,7 @@
         zephyr,display = &oled;
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
+        zmk,mouse-device = &ps2_mouse;
     };
 
     default_transform: keymap_transform_0 {
@@ -59,7 +60,26 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
 
     };
 
+    // PS2 Trackpoint node
+    ps2_mouse: ps2_mouse {
+        compatible = "zmk,input-mouse-ps2-uart";
+        status = "okay";
+        ps2-device = <&ps2_uart>;
+    };
+
     // TODO: per-key RGB node(s)?
+};
+
+// PS2 UART configuration for trackpoint
+&pro_micro_uart {
+    status = "okay";
+    current-speed = <115200>;
+    ps2_uart: ps2_uart {
+        compatible = "zmk,ps2-uart";
+        status = "okay";
+        clock-gpio = <&pro_micro 10 GPIO_ACTIVE_LOW>;
+        data-gpio = <&pro_micro 16 GPIO_ACTIVE_LOW>;
+    };
 };
 
 &pro_micro_i2c {
