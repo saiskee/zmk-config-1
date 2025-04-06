@@ -10,7 +10,7 @@
     chosen {
         zephyr,display = &oled;
         zmk,kscan = &kscan0;
-        zmk,physical-layout = &foostan_corne_tp_6col_layout;
+        // zmk,physical-layout = &foostan_corne_tp_6col_layout;
     };
 
     default_transform: keymap_transform_0 {
