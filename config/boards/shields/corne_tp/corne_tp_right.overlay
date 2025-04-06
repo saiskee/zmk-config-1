@@ -5,6 +5,7 @@
  */
 
 #include "corne_tp.dtsi"
+#include <dt-bindings/zmk/input_transform.h>
 
 &default_transform {
     col-offset = <6>;
