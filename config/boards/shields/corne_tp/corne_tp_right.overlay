@@ -540,6 +540,18 @@
 
         device = <&mouse_ps2>;
 
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
+
+        mac_scroller {
+          layers = <2>;
+          input-processors
+            = <&zip_xy_scaler 1 32>
+            , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>
+            , <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>
+            , <&zip_xy_to_scroll_mapper>
+            ;
+        };
+
 		// Some of the available settings depend on the keymap. So they
 		// are adjusted in...
 		// zmk-config/config/includes/mouse_tp.dtsi
