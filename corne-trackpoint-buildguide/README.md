@@ -105,9 +105,19 @@ To enable this feature in your ZMK config, add these lines to your mouse_ps2 con
 ## Tips and Observations
 
 - The black trackpoint cap that came with my Sprintek module has been very comfortable to use
-- The press-to-select feature eliminates the need for separate mouse buttons
+- The press-to-select feature is useful but takes some adjustment. I'm still fine-tuning the sensitivity:
+  - If set too low, it triggers accidentally while moving the cursor
+  - If set too high, it requires too much force to click
+  - You can adjust this in your config with the `tp-press-to-select-threshold` value
+  - Values of 1-8 are typical, with lower numbers being more sensitive
+  - You can also adjust it at runtime using the `MS_TP_PTS_THRESHOLD_INCR` and `MS_TP_PTS_THRESHOLD_DECR` keycodes
+- You might prefer traditional mouse buttons initially while getting used to the trackpoint
 - Using the M2 extender allows for easy height adjustment, which is important for comfortable use
 - Mounting the trackpoint under one of the tenting legs helps conceal the modification while maintaining functionality
+- If you find yourself accidentally clicking or not clicking when you want to, consider adjusting these settings:
+  - `tp-sensitivity` - controls how fast the cursor moves (default: 128)
+  - `tp-pts-threshold` - controls how hard you need to press to click (default: 8)
+  - `tp-neg-inertia` - affects how responsive the trackpoint feels (default: 6)
 
 ## Conclusion
 
