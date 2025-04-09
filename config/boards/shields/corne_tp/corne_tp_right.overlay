@@ -547,7 +547,7 @@
         mac_scroller {
           layers = <1>;
           input-processors
-            = <&zip_xy_scaler 1 80>
+            = <&zip_xy_scaler 1 70>
             , <&zip_xy_to_scroll_mapper>
             ;
         };
