@@ -139,8 +139,8 @@
 
         setup_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &U_MSS_TP_S_I  &bt BT_SEL 1  &trans  &trans  &bt BT_CLR_ALL  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &U_MSS_TP_S_D  &trans        &trans  &trans  &bootloader     &trans
+&trans  &trans  &trans  &trans  &trans  &trans    U_MSS_TP_S_I  &bt BT_SEL 1  &trans  &trans  &bt BT_CLR_ALL  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    U_MSS_TP_S_D  &trans        &trans  &trans  &bootloader     &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans         &trans        &trans  &trans  &trans          &trans
                         &trans  &trans  &trans    &trans         &trans        &trans
             >;
