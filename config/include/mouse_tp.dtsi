@@ -89,7 +89,7 @@
 
       // Set the layer that should automatically activate when the mouse is
       // moving.
-      // layer-toggle = <func_layer>;
+      // layer-toggle = <MOUSE_TP>;
 
       // How long the mouse needs to move for before the layer is activated (to
       // avoid accidental activations while typing) (Default: 250)
@@ -108,7 +108,7 @@
     &mouse_ps2 {
 
       // How sensitive the TP is (Default: 128)
-      tp-sensitivity = <250>;
+      // tp-sensitivity = <128>;
 
 
       // The maximum mouse movement speed the TP will accelarate to
