@@ -1,8 +1,8 @@
 #ifdef HAS_MOUSE_TP
   #include <dt-bindings/zmk/mouse.h>
-  #include <dt-bindings/zmk/mouse_setting.h>
+  // #include <dt-bindings/zmk/mouse_setting.h>
   #include <behaviors/mouse_keys.dtsi>
-  #include <behaviors/mouse_setting.dtsi>
+  // #include <behaviors/mouse_setting.dtsi>
 
 
 
@@ -124,7 +124,7 @@
       // Enable clicking by tapping on the TP.
       // Not all TPs support this.
       tp-press-to-select;
-      tp-press-to-select-threshold = <1>;
+      tp-press-to-select-threshold = <0>;
 
 
       // Adjust axis settings on the TP
