@@ -537,18 +537,18 @@
     };
 
     // Add the new small movement detector listener
-    small_movement_detector: small_movement_detector {
-      compatible = "zmk,input-listener-tp-small-movement";
-      status = "disabled";
-      device = <&mouse_ps2>;  // Same device as main input listener
+  //   small_movement_detector: small_movement_detector {
+  //     compatible = "zmk,input-listener-tp-small-movement";
+  //     status = "disabled";
+  //     device = <&mouse_ps2>;  // Same device as main input listener
 
-      // Customize threshold as needed (default is 3)
-      // movement-threshold = <3>;
+  //     // Customize threshold as needed (default is 3)
+  //     // movement-threshold = <3>;
 
-      // Match these with your main input listener
-      // y-invert;  // if needed
-      // xy-swap;   // if needed
-  };
+  //     // Match these with your main input listener
+  //     // y-invert;  // if needed
+  //     // xy-swap;   // if needed
+  // };
 
     mouse_ps2_input_listener: mouse_ps2_input_listener {
         compatible = "zmk,input-listener";

@@ -180,9 +180,9 @@
       status = "okay";
     };
 
-    &small_movement_detector {
-      status = "okay";
-    };
+    // &small_movement_detector {
+    //   status = "okay";
+    // };
 
     #ifdef MOUSE_PS2_DRIVER_UART
 
