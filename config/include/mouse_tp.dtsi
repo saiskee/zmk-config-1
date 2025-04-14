@@ -180,7 +180,6 @@
       status = "okay";
     };
 
-
     &small_movement_detector {
       status = "okay";
     };
