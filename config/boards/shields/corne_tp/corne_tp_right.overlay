@@ -543,7 +543,7 @@
       device = <&mouse_ps2>;  // Same device as main input listener
 
       // Customize threshold as needed (default is 3)
-      movement-threshold = <3>;
+      // movement-threshold = <3>;
 
       // Match these with your main input listener
       // y-invert;  // if needed
