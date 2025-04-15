@@ -534,6 +534,7 @@
 #ifdef MOUSE_PS2_PIN_RST_PRO_MICRO
         rst-gpios = MOUSE_PS2_PIN_RST_PRO_MICRO;
 #endif
+        single-tap-click = <1>;  /* Enable single tap clicking */
     };
 
     // Add the new small movement detector listener
