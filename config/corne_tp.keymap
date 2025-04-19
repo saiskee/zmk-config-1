@@ -101,10 +101,6 @@
             key-positions = <13 14 15 16 17>;
         };
 
-        colemak_layer_tog {
-            bindings = <&tog 4>;
-            key-positions = <30 6 10 34>;
-        };
     };
 
     keymap {
@@ -112,47 +108,39 @@
 
         default_layer {
             bindings = <
-&none  &hm ESC Q         &kp W  &kp E        &kp R  &kp T       &kp Y      &kp U          &kp I          &kp O    &kp P                  &none
-&none  &kp A             &kp S  &kp D        &kp F  &kp G       &kp H      &kp J          &kp K          &kp L    &lt 2 SQT              &none
-&none  &hm LEFT_SHIFT Z  &kp X  &kp C        &kp V  &kp B       &kp N      &kp M          &kp COMMA      &kp DOT  &mt RIGHT_SHIFT SLASH  &none
-                                &double_tap  &mo 1  &kp LGUI    &kp SPACE  &kp BACKSPACE  &kp RIGHT_ALT
+&none  &hm ESC Q         &kp W                  &kp E                     &kp R         &kp T           &kp Y          &kp U             &kp I              &kp O      &kp P             &none
+&none  &kp A             &kp S                  &kp D                     &kp F         &kp G           &kp H          &kp J             &kp K              &kp L      &lt 2 SQT         &none
+&none  &hm LEFT_SHIFT Z  &kp X                  &kp C                     &kp V         &kp B           &kp N          &kp M             &kp COMMA          &kp DOT    &mt RIGHT_SHIFT SLASH &none
+                                                &double_tap               &mo 1         &kp LGUI        &kp SPACE      &kp BACKSPACE     &kp RIGHT_ALT
             >;
         };
 
         num_layer {
             bindings = <
-&none  &kp NUMBER_1    &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5     &kp NUMBER_6   &kp N7            &kp N8             &kp N9     &kp N0          &none
-&none  &kp GRAVE       &kp MINUS     &kp EQUAL     &none         &none      &none          &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SEMI   &kp SQT         &none
-&none  &kp LEFT_SHIFT  &mms MS_TP_RAM_ADDR_INCR    &mms MS_TP_RAM_ADDR_DECR &none         &none     &kp BACKSLASH  &kp COMMA         &kp PERIOD         &kp SLASH  &kp LEFT_SHIFT  &none
-                                     &trans        &trans        &trans     &trans         &mo 3             &trans
+&none  &kp NUMBER_1    &kp NUMBER_2             &kp NUMBER_3              &kp NUMBER_4  &kp N5          &kp NUMBER_6   &kp N7            &kp N8             &kp N9     &kp N0           &none
+&none  &kp GRAVE       &kp MINUS                &kp EQUAL                 &kp SQT       &none           &none          &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SEMI   &kp SQT          &none
+&none  &kp LEFT_SHIFT  &mms MS_TP_RAM_ADDR_INCR &mms MS_TP_RAM_ADDR_DECR  &none         &none           &kp BACKSLASH  &kp COMMA         &kp PERIOD         &kp SLASH  &kp LEFT_SHIFT   &none
+                                                &trans                    &trans        &trans          &trans         &mo 3             &trans
             >;
         };
 
         func_layer {
             bindings = <
-&none  &kp F1          &msc SCRL_LEFT  &kp UP_ARROW    &msc SCRL_RIGHT  &bt BT_SEL 0      &none       &msc SCRL_UP    &mmv MOVE_UP     &msc SCRL_DOWN   &kp F10  &none
-&none  &kp LEFT_SHIFT  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &bt BT_SEL 1      &none       &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &none    &none
-&none  &kp LEFT_SHIFT  &trans          &trans          &trans           &bt BT_CLR_ALL    &kp C_MUTE  &kp C_VOL_DN    &kp C_VOLUME_UP  &trans           &trans   &none
-                                       &trans          &kp LEFT_ALT     &kp LGUI          &mkp LCLK   &mkp RCLK       &trans
+&none  &kp F1          &none                    &kp UP_ARROW              &none           &bt BT_SEL 0    &none          &none             &none              &none      &kp F10          &none
+&none  &kp LEFT_SHIFT  &kp LEFT_ARROW           &kp DOWN_ARROW            &kp RIGHT_ARROW &bt BT_SEL 1    &none          &kp LPAR          &kp RPAR           &none      &none            &none
+&none  &kp LEFT_SHIFT  &trans                   &trans                    &trans          &bt BT_CLR_ALL  &kp C_MUTE     &kp C_VOL_DN      &kp C_VOLUME_UP    &trans     &trans           &none
+                                                &trans                    &kp LEFT_ALT    &kp LGUI        &mkp LCLK      &mkp RCLK         &trans
             >;
         };
 
         setup_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &bt BT_SEL 1  &trans  &trans  &bt BT_CLR_ALL  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans        &trans  &trans  &bootloader     &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans         &trans        &trans  &trans  &trans          &trans
-                        &trans  &trans  &trans    &trans         &trans        &trans
+&trans  &trans          &trans                   &trans                    &trans        &trans          &trans                      &bt BT_SEL 1            &trans                     &trans           &bt BT_CLR_ALL     &trans
+&trans  &trans          &trans                   &trans                    &trans        &trans          &mms MS_TP_SENSITIVITY_INCR &mms MS_TP_VALUE6_INCR  &mms MS_TP_NEG_INERTIA_INCR &mms MS_LOG      &bootloader        &trans
+&trans  &trans          &trans                   &trans                    &trans        &trans          &mms MS_TP_SENSITIVITY_DECR &mms MS_TP_VALUE6_DECR  &mms MS_TP_NEG_INERTIA_DECR &mms MS_RESET    &trans             &trans
+                                                 &trans                    &trans        &trans          &trans                      &trans                  &trans
             >;
         };
 
-        colemak_layer {
-            bindings = <
-&none  &hm ESC Q         &kp W  &kp F             &kp P  &kp B       &kp J      &kp L          &kp U          &kp Y    &kp SEMICOLON          &none
-&none  &kp A             &kp R  &kp S             &kp T  &kp G       &kp M      &kp N          &kp E          &kp I    &kp O                  &none
-&none  &hm LEFT_SHIFT Z  &kp X  &kp C             &kp D  &kp V       &kp K      &kp H          &kp COMMA      &kp DOT  &mt RIGHT_SHIFT SLASH  &none
-                                &kp LEFT_CONTROL  &mo 1  &kp LGUI    &kp SPACE  &kp BACKSPACE  &kp RIGHT_ALT
-            >;
-        };
     };
 };
