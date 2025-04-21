@@ -41,7 +41,7 @@ include:
     shield: corne_tp_right
     snippet: zmk-usb-logging
     artifact-name: right-corne-tp-logging
-    - board: nice_nano_v2
-      shield: corne_tp_right
-      snippet: zmk-usb-logging
-      artifact-name: right-corne-tp
+  - board: nice_nano_v2
+    shield: corne_tp_right
+    snippet: zmk-usb-logging
+    artifact-name: right-corne-tp
