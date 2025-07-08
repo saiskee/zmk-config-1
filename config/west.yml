@@ -12,7 +12,8 @@ manifest:
       revision: main
       import: app/west.yml
     - name: kb_zmk_ps2_mouse_trackpoint_driver
-      remote: saiskee
+      # remote: saiskee # small movement detector
+      remote: infused-kim
       revision: corne-tp-listener
   self:
     path: config
