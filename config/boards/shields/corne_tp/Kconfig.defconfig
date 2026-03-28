@@ -13,10 +13,14 @@ if SHIELD_CORNE_TP_LEFT || SHIELD_CORNE_TP_RIGHT
 config ZMK_SPLIT
     default y
 
+# Promptless symbol: must be set here (not only in *.conf) to satisfy Kconfig / CI.
+config ZMK_BOARD_COMPAT
+    default y
+
 if ZMK_DISPLAY
 
 config I2C
-    default yyhpy
+    default y
 
 config SSD1306
     default y
