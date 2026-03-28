@@ -27,6 +27,54 @@
         ;
 };
 
+/*
+ * Cirque Pinnacle (same driver/options as Daedalus: cirque,pinnacle @ 0x2a, sensitivity 4x).
+ *
+ * Pin allocation on this shield (nice!nano pro_micro indices — no overlaps):
+ *
+ *   Matrix rows (both halves):     4, 5, 6, 7
+ *   Matrix columns (this half):    14, 15, 18, 19, 20, 21
+ *   Trackpoint PS/2:               1 (D1 data), 2 (D2 clock), 3 (D3 reset)
+ *   Cirque I2C + DR:               8 (D8 SDA / P1.04), 9 (D9 SCL / P1.06), 16 (D16 DR / P0.10)
+ *
+ * Daedalus PCB wires SDA/SCL/DR differently; stock Corne rows use D6/D7, so Cirque uses D8/D9/D16
+ * here. OLED shares I2C0 with Cirque — wire its SDA/SCL to the same D8/D9 lines as the trackpad.
+ *
+ * If you enable MOUSE_PS2_ALT_PINS or change trackpoint defines, re-check this table.
+ */
+&pinctrl {
+    i2c0_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 04)>,
+                <NRF_PSEL(TWIM_SCL, 1, 06)>;
+            bias-pull-up;
+        };
+    };
+    i2c0_sleep: i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 04)>,
+                <NRF_PSEL(TWIM_SCL, 1, 06)>;
+            low-power-enable;
+        };
+    };
+};
+
+&pro_micro_i2c {
+    status = "okay";
+    glidepoint: glidepoint@2a {
+        compatible = "cirque,pinnacle";
+        status = "okay";
+        reg = <0x2a>;
+        dr-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH)>;
+        sensitivity = "4x";
+    };
+};
+
+&glidepoint_listener {
+    status = "okay";
+    device = <&glidepoint>;
+};
+
 // Trackpoint support
 
 /*
@@ -83,8 +131,8 @@
 // But on the corne keyboard, these pins are used for the backlight. So, this
 // example config uses the pins D16 and D10 for clock and data and
 // D9 for the reset circuit.
-#define MOUSE_PS2_PIN_SCL_PRO_MICRO <&pro_micro 2 GPIO_ACTIVE_HIGH> // P0.10
-#define MOUSE_PS2_PIN_SDA_PRO_MICRO <&pro_micro 1 GPIO_ACTIVE_HIGH> // P0.09
+#define MOUSE_PS2_PIN_SCL_PRO_MICRO <&pro_micro 2 GPIO_ACTIVE_HIGH> // D2 / P0.17 (does not overlap Cirque 8/9/16 or matrix)
+#define MOUSE_PS2_PIN_SDA_PRO_MICRO <&pro_micro 1 GPIO_ACTIVE_HIGH> // D1 / P0.06
 
 // Configure the Power-On-Reset pin
 //

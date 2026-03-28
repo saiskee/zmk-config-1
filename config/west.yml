@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/infused-kim
     - name: saiskee
       url-base: https://github.com/saiskee
+    - name: petejohanson
+      url-base: https://github.com/petejohanson
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -14,6 +16,9 @@ manifest:
     - name: kb_zmk_ps2_mouse_trackpoint_driver
       # remote: saiskee # small movement detector
       remote: infused-kim
+      revision: main
+    - name: cirque-input-module
+      remote: petejohanson
       revision: main
   self:
     path: config
