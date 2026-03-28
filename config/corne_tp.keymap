@@ -135,10 +135,10 @@
 
         setup_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR_ALL  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans        &trans        &trans        &bootloader     &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans        &trans        &trans        &trans          &trans
-                        &trans  &trans  &trans  &trans        &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 0                 &bt BT_SEL 1            &bt BT_SEL 2                 &bt BT_SEL 3   &bt BT_CLR_ALL  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mms MS_TP_SENSITIVITY_INCR  &mms MS_TP_VALUE6_INCR  &mms MS_TP_NEG_INERTIA_INCR  &mms MS_LOG    &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mms MS_TP_SENSITIVITY_DECR  &mms MS_TP_VALUE6_DECR  &mms MS_TP_NEG_INERTIA_DECR  &mms MS_RESET  &trans          &trans
+                        &trans  &trans  &trans  &trans                       &trans                  &trans
             >;
         };
 
