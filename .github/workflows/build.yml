@@ -2,4 +2,6 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    # Pin to the same ZMK release as config/west.yml. @main expects newer Zephyr
+    # (west boards --format "{qualifiers}") and fails with KeyError on older trees.
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.2.1
