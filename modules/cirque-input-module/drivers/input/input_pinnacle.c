@@ -251,6 +251,13 @@ static void pinnacle_report_data(const struct device *dev) {
     const struct pinnacle_config *config = dev->config;
     uint8_t packet[3];
     int ret;
+
+    static uint32_t report_trace_count;
+    if (report_trace_count < 6U) {
+        LOG_INF("pinnacle report_data #%u dev=%p", report_trace_count, dev);
+        report_trace_count++;
+    }
+
     ret = pinnacle_seq_read(dev, PINNACLE_STATUS1, packet, 1);
     if (ret < 0) {
         LOG_ERR("read status: %d", ret);
@@ -317,9 +324,26 @@ static void pinnacle_work_cb(struct k_work *work) {
 static void pinnacle_poll_work(struct k_work *work) {
     struct k_work_delayable *dwork = CONTAINER_OF(work, struct k_work_delayable, work);
     struct pinnacle_data *data = CONTAINER_OF(dwork, struct pinnacle_data, poll_work);
+    static uint32_t poll_trace_count;
+    static uint32_t poll_detail_count;
+
+    if (poll_trace_count < 8U) {
+        LOG_INF("pinnacle poll_work #%u dev=%p", poll_trace_count,
+                data->dev != NULL ? (void *)data->dev : NULL);
+        poll_trace_count++;
+    }
 
     if (data->dev != NULL) {
+        if (poll_detail_count < 3U) {
+            LOG_INF("pinnacle poll: report_data enter #%u", poll_detail_count);
+        }
         pinnacle_report_data(data->dev);
+        if (poll_detail_count < 3U) {
+            LOG_INF("pinnacle poll: report_data exit #%u", poll_detail_count);
+            poll_detail_count++;
+        }
+    } else {
+        LOG_WRN("pinnacle poll: skipped (dev NULL)");
     }
     k_work_reschedule(dwork, K_MSEC(CONFIG_INPUT_PINNACLE_POLL_PERIOD_MS));
 }
@@ -456,6 +480,8 @@ static int pinnacle_init(const struct device *dev) {
     const struct pinnacle_config *config = dev->config;
     int ret;
 
+    LOG_INF("pinnacle init: 1 enter dev=%p data=%p", dev, data);
+
     data->in_int = false;
     /* Required before any set_int(..., true): ERA paths reschedule poll; poll uses data->dev. */
     data->dev = dev;
@@ -464,8 +490,11 @@ static int pinnacle_init(const struct device *dev) {
     if (IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)) {
         /* Must run before any pinnacle_era_* path: those call set_int() which cancels poll_work. */
         k_work_init_delayable(&data->poll_work, pinnacle_poll_work);
+        LOG_INF("pinnacle init: 2 poll work initialized");
     }
 #endif
+
+    LOG_INF("pinnacle init: 3 before FW_ID read");
 
     uint8_t fw_id[2];
     ret = pinnacle_seq_read(dev, PINNACLE_FW_ID, fw_id, 2);
@@ -473,15 +502,18 @@ static int pinnacle_init(const struct device *dev) {
         LOG_ERR("Failed to get the FW ID %d", ret);
     }
 
-    LOG_DBG("Found device with FW ID: 0x%02x, Version: 0x%02x", fw_id[0], fw_id[1]);
+    LOG_INF("pinnacle init: 4 FW_ID ret=%d id=0x%02x ver=0x%02x", ret, fw_id[0], fw_id[1]);
 
     k_msleep(10);
+    LOG_INF("pinnacle init: 5 clear STATUS1");
+
     ret = pinnacle_write(dev, PINNACLE_STATUS1, 0); // Clear CC
     if (ret < 0) {
         LOG_ERR("can't write %d", ret);
         return ret;
     }
     k_usleep(50);
+    LOG_INF("pinnacle init: 6 chip reset");
     ret = pinnacle_write(dev, PINNACLE_SYS_CFG, PINNACLE_SYS_CFG_RESET);
     if (ret < 0) {
         LOG_ERR("can't reset %d", ret);
@@ -494,17 +526,20 @@ static int pinnacle_init(const struct device *dev) {
         return ret;
     }
 
+    LOG_INF("pinnacle init: 7 set_adc_tracking_sensitivity");
     ret = pinnacle_set_adc_tracking_sensitivity(dev);
     if (ret < 0) {
         LOG_ERR("Failed to set ADC sensitivity %d", ret);
         return ret;
     }
 
+    LOG_INF("pinnacle init: 8 tune_edge_sensitivity");
     ret = pinnacle_tune_edge_sensitivity(dev);
     if (ret < 0) {
         LOG_ERR("Failed to tune edge sensitivity %d", ret);
         return ret;
     }
+    LOG_INF("pinnacle init: 9 force_recalibrate");
     ret = pinnacle_force_recalibrate(dev);
     if (ret < 0) {
         LOG_ERR("Failed to force recalibration %d", ret);
@@ -518,6 +553,7 @@ static int pinnacle_init(const struct device *dev) {
         }
     }
 
+    LOG_INF("pinnacle init: 10 sleep interval / feed cfg");
     uint8_t packet[1];
     ret = pinnacle_seq_read(dev, PINNACLE_SLEEP_INTERVAL, packet, 1);
 
@@ -563,13 +599,16 @@ static int pinnacle_init(const struct device *dev) {
         return ret;
     }
 
+    LOG_INF("pinnacle init: 11 clear_status");
     pinnacle_clear_status(dev);
 
 #if IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)
     if (IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)) {
+        LOG_INF("pinnacle init: 12 polling start (set_int true)");
         pinnacle_write(dev, PINNACLE_FEED_CFG1, feed_cfg1);
 
         set_int(dev, true);
+        LOG_INF("pinnacle init: 13 done (polling)");
         return 0;
     }
 #endif
@@ -589,8 +628,10 @@ static int pinnacle_init(const struct device *dev) {
 
     pinnacle_write(dev, PINNACLE_FEED_CFG1, feed_cfg1);
 
+    LOG_INF("pinnacle init: 12b GPIO DR path set_int true");
     set_int(dev, true);
 
+    LOG_INF("pinnacle init: 13b done (gpio)");
     return 0;
 }
 
