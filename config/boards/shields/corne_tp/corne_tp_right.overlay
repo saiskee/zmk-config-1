@@ -77,8 +77,7 @@
         compatible = "cirque,pinnacle";
         status = "okay";
         reg = <0x2a>;
-        /* dr-gpios optional when CONFIG_INPUT_PINNACLE_POLLING=y (see corne_tp_right.conf) */
-        /* dr-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH)>; */
+        dr-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH)>;
         sensitivity = "4x";
         y-invert;
     };
