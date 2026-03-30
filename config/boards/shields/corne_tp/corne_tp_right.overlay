@@ -87,6 +87,11 @@
     device = <&glidepoint>;
 };
 
+/* PS/2 trackpoint: set to 1 to re-enable (UART, DT nodes, mouse_tp.dtsi). */
+#define ENABLE_PS2_TRACKPOINT 0
+
+#if ENABLE_PS2_TRACKPOINT
+
 // Trackpoint support
 
 /*
@@ -632,3 +637,5 @@
 		// zmk-config/config/includes/mouse_tp.dtsi
     };
 };
+
+#endif /* ENABLE_PS2_TRACKPOINT */
