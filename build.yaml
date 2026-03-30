@@ -1,8 +1,8 @@
 # This file generates the GitHub Actions matrix
 # For simple board + shield combinations, add them
 # to the top level board and shield arrays, for more
-# control, add individual board + shield combinations to
-# the `include` property, e.g:
+# control, add individual board + shield combinations to the
+# `include` property, e.g:
 #
 # board: [ "nice_nano_v2" ]
 # shield: [ "corne_left", "corne_right" ]
@@ -11,23 +11,30 @@
 #   - board: nice_nano_v2
 #     shield: reviung41
 #
+# Vendored Cirque module: modules/cirque-input-module. CI sets GITHUB_WORKSPACE.
+# Local build: export GITHUB_WORKSPACE=$PWD (repo root) before west build, or:
+#   west build ... -- -DZMK_EXTRA_MODULES=$PWD/modules/cirque-input-module ...
+#
 ---
 include:
   - board: nice_nano_v2
     shield: corne_left
     snippet: studio-rpc-usb-uart
     artifact-name: left-corne-studio
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    cmake-args: '-DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/modules/cirque-input-module -DCONFIG_ZMK_STUDIO=y'
   - board: nice_nano_v2
     shield: corne_left
     # snippet: zmk-usb-logging
     artifact-name: left-corne-logging
+    cmake-args: '-DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/modules/cirque-input-module'
   - board: nice_nano_v2
-    shield: corne_right
-    snippet: zmk-usb-logging
-    artifact-name: right-corne-logging
+    shield: corne_left
+    # snippet: zmk-usb-logging
+    artifact-name: left-corne
+    cmake-args: '-DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/modules/cirque-input-module'
   - board: nice_nano_v2
     shield: settings_reset
+    cmake-args: '-DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/modules/cirque-input-module'
   # - board: nice_nano_v2
   #   shield: corne_tp_left
   #   snippet: studio-rpc-usb-uart
@@ -37,10 +44,13 @@ include:
     shield: corne_tp_left
     # snippet: zmk-usb-logging
     artifact-name: left-corne-tp
+    cmake-args: '-DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/modules/cirque-input-module'
   - board: nice_nano_v2
     shield: corne_tp_right
     snippet: zmk-usb-logging
     artifact-name: right-corne-tp-logging
+    cmake-args: '-DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/modules/cirque-input-module'
   - board: nice_nano_v2
     shield: corne_tp_right
     artifact-name: right-corne-tp
+    cmake-args: '-DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/modules/cirque-input-module'

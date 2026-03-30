@@ -1,0 +1,41 @@
+# Copyright (c) 2022 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+menuconfig INPUT_PINNACLE
+    bool "Cirque Pinnacle trackpads"
+    default y
+    depends on GPIO
+    depends on SPI || I2C
+    depends on INPUT
+    depends on DT_HAS_CIRQUE_PINNACLE_ENABLED
+    help
+      Enable driver for Cirque Pinnacle trackpads
+
+if INPUT_PINNACLE
+
+config INPUT_PINNACLE_INIT_PRIORITY
+    int "Cirque Pinnacle initialization priority"
+    default INPUT_INIT_PRIORITY
+
+config INPUT_PINNACLE_POLLING
+    bool "Poll I2C without DR (no data-ready GPIO)"
+    depends on I2C
+    help
+      When enabled, the driver periodically reads STATUS1 instead of using the DR interrupt.
+      Use when you cannot route the DR line; higher power use and slightly higher latency.
+
+config INPUT_PINNACLE_POLL_PERIOD_MS
+    int "Polling period when INPUT_PINNACLE_POLLING is enabled (ms)"
+    depends on INPUT_PINNACLE_POLLING
+    range 1 50
+    default 10
+
+if ZMK_MOUSE
+
+config ZMK_INPUT_PINNACLE_IDLE_SLEEPER
+    bool "Pinnacle Sleep linked to ZMK idle state"
+    default n
+
+endif
+
+endif

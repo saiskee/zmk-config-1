@@ -17,8 +17,7 @@ manifest:
       # remote: saiskee # small movement detector
       remote: infused-kim
       revision: main
-    - name: cirque-input-module
-      remote: petejohanson
-      revision: main
+    # Cirque: vendored under modules/cirque-input-module (polling patch). Pass
+    # -DZMK_EXTRA_MODULES to point at it (see build.yaml / local build notes).
   self:
     path: config
