@@ -13,6 +13,12 @@
 /* Fixed compile-time level: CONFIG_INPUT_LOG_LEVEL often defaults to OFF, which strips LOG_INF. */
 LOG_MODULE_REGISTER(pinnacle, LOG_LEVEL_INF);
 
+/* Same as Zephyr gpio_is_valid_dt (port != NULL); avoids undefined reference in some link setups. */
+static inline bool pinnacle_dr_gpio_valid(const struct gpio_dt_spec *spec)
+{
+    return spec->port != NULL;
+}
+
 static int pinnacle_seq_read(const struct device *dev, const uint8_t addr, uint8_t *buf,
                              const uint8_t len) {
     const struct pinnacle_config *config = dev->config;
@@ -131,7 +137,7 @@ static int set_int(const struct device *dev, const bool en) {
     }
 #endif
 
-    if (!gpio_is_valid_dt(&config->dr)) {
+    if (!pinnacle_dr_gpio_valid(&config->dr)) {
         return 0;
     }
 
@@ -614,7 +620,7 @@ static int pinnacle_init(const struct device *dev) {
     }
 #endif
 
-    if (!gpio_is_valid_dt(&config->dr)) {
+    if (!pinnacle_dr_gpio_valid(&config->dr)) {
         LOG_ERR("Pinnacle: dr-gpios is required unless CONFIG_INPUT_PINNACLE_POLLING=y");
         return -EIO;
     }
