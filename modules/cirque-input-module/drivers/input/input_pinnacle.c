@@ -141,8 +141,11 @@ static int set_int(const struct device *dev, const bool en) {
         return 0;
     }
 
-    int ret = gpio_pin_interrupt_configure_dt(&config->dr,
-                                              en ? GPIO_INT_EDGE_TO_ACTIVE : GPIO_INT_DISABLE);
+    /* Avoid gpio_pin_interrupt_configure_dt(): some SDK/Zephyr combos resolve it to
+     * gpio_is_valid_dt(), which may not link in this firmware image.
+     */
+    gpio_flags_t irq_flags = en ? GPIO_INT_EDGE_TO_ACTIVE : GPIO_INT_DISABLE;
+    int ret = gpio_pin_interrupt_configure(config->dr.port, config->dr.pin, irq_flags);
     if (ret < 0) {
         LOG_ERR("can't set interrupt");
     }
@@ -625,7 +628,11 @@ static int pinnacle_init(const struct device *dev) {
         return -EIO;
     }
 
-    gpio_pin_configure_dt(&config->dr, GPIO_INPUT);
+    ret = gpio_pin_configure(config->dr.port, config->dr.pin, config->dr.dt_flags | GPIO_INPUT);
+    if (ret < 0) {
+        LOG_ERR("Failed to configure DR pin: %d", ret);
+        return -EIO;
+    }
     gpio_init_callback(&data->gpio_cb, pinnacle_gpio_cb, BIT(config->dr.pin));
     ret = gpio_add_callback(config->dr.port, &data->gpio_cb);
     if (ret < 0) {

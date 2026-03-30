@@ -1,0 +1,13 @@
+# Local builds matching CI: https://github.com/zmkfirmware/zmk/blob/v0.2.1/.github/workflows/build-user-config.yml
+# Usage:
+#   ./scripts/zmk-docker-build.sh nice_nano_v2 corne_tp_right zmk-usb-logging
+#
+services:
+  zmk-build:
+    image: docker.io/zmkfirmware/zmk-build-arm:stable
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      # build.yaml cmake-args use ${GITHUB_WORKSPACE}/modules/cirque-input-module
+      GITHUB_WORKSPACE: /workspace
