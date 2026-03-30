@@ -78,7 +78,8 @@
         status = "okay";
         reg = <0x2a>;
         dr-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH)>;
-        sensitivity = "4x";
+        sensitivity = "8x";
+        y-invert;
     };
 };
 
