@@ -318,7 +318,9 @@ static void pinnacle_poll_work(struct k_work *work) {
     struct k_work_delayable *dwork = CONTAINER_OF(work, struct k_work_delayable, work);
     struct pinnacle_data *data = CONTAINER_OF(dwork, struct pinnacle_data, poll_work);
 
-    pinnacle_report_data(data->dev);
+    if (data->dev != NULL) {
+        pinnacle_report_data(data->dev);
+    }
     k_work_reschedule(dwork, K_MSEC(CONFIG_INPUT_PINNACLE_POLL_PERIOD_MS));
 }
 #endif
@@ -455,6 +457,8 @@ static int pinnacle_init(const struct device *dev) {
     int ret;
 
     data->in_int = false;
+    /* Required before any set_int(..., true): ERA paths reschedule poll; poll uses data->dev. */
+    data->dev = dev;
     k_work_init(&data->work, pinnacle_work_cb);
 #if IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)
     if (IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)) {
@@ -558,8 +562,6 @@ static int pinnacle_init(const struct device *dev) {
         LOG_ERR("can't write %d", ret);
         return ret;
     }
-
-    data->dev = dev;
 
     pinnacle_clear_status(dev);
 
