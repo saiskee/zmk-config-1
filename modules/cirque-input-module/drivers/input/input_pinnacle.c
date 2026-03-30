@@ -10,7 +10,8 @@
 
 #include "input_pinnacle.h"
 
-LOG_MODULE_REGISTER(pinnacle, CONFIG_INPUT_LOG_LEVEL);
+/* Fixed compile-time level: CONFIG_INPUT_LOG_LEVEL often defaults to OFF, which strips LOG_INF. */
+LOG_MODULE_REGISTER(pinnacle, LOG_LEVEL_INF);
 
 static int pinnacle_seq_read(const struct device *dev, const uint8_t addr, uint8_t *buf,
                              const uint8_t len) {
