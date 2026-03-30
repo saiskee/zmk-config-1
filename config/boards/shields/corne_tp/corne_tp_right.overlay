@@ -62,9 +62,13 @@
 /*
  * Cirque Pinnacle trackpad: keep I2C + sensor + input listener enabled on this half.
  * (pro_micro_i2c aliases to &i2c0 on nice!nano.)
+ *
+ * 100 kHz: more tolerant of long traces / internal bias-pull-up only; raise to 400000
+ * if you have external 4.7k pull-ups on SDA+SCL and a clean bus.
  */
 &i2c0 {
     status = "okay";
+    clock-frequency = <100000>;
 };
 
 &pro_micro_i2c {
