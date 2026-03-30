@@ -38,7 +38,7 @@
  *   Cirque I2C + DR:               8 (D8 SDA / P1.04), 9 (D9 SCL / P1.06), 16 (D16 DR / P0.10)
  *
  * Daedalus PCB wires SDA/SCL/DR differently; stock Corne rows use D6/D7, so Cirque uses D8/D9/D16
- * here. OLED shares I2C0 with Cirque — wire its SDA/SCL to the same D8/D9 lines as the trackpad.
+ * here.
  *
  * If you enable MOUSE_PS2_ALT_PINS or change trackpoint defines, re-check this table.
  */
@@ -59,6 +59,14 @@
     };
 };
 
+/*
+ * Cirque Pinnacle trackpad: keep I2C + sensor + input listener enabled on this half.
+ * (pro_micro_i2c aliases to &i2c0 on nice!nano.)
+ */
+&i2c0 {
+    status = "okay";
+};
+
 &pro_micro_i2c {
     status = "okay";
     glidepoint: glidepoint@2a {
@@ -68,6 +76,10 @@
         dr-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH)>;
         sensitivity = "4x";
     };
+};
+
+&glidepoint {
+    status = "okay";
 };
 
 &glidepoint_listener {
