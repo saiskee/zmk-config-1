@@ -1,0 +1,8 @@
+# Local / Docker west outputs & Zephyr checkout (do not ignore repo modules/cirque-input-module)
+/.west/
+/zmk/
+/zephyr/
+/bootloader/
+/tools/
+/build/
+/firmware/
