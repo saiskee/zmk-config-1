@@ -68,7 +68,7 @@
  */
 &i2c0 {
     status = "okay";
-    clock-frequency = <100000>;
+    clock-frequency = <400000>;
 };
 
 &pro_micro_i2c {
@@ -78,7 +78,7 @@
         status = "okay";
         reg = <0x2a>;
         dr-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH)>;
-        sensitivity = "8x";
+        sensitivity = "4x";
         y-invert;
     };
 };
