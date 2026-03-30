@@ -454,6 +454,15 @@ static int pinnacle_init(const struct device *dev) {
     const struct pinnacle_config *config = dev->config;
     int ret;
 
+    data->in_int = false;
+    k_work_init(&data->work, pinnacle_work_cb);
+#if IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)
+    if (IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)) {
+        /* Must run before any pinnacle_era_* path: those call set_int() which cancels poll_work. */
+        k_work_init_delayable(&data->poll_work, pinnacle_poll_work);
+    }
+#endif
+
     uint8_t fw_id[2];
     ret = pinnacle_seq_read(dev, PINNACLE_FW_ID, fw_id, 2);
     if (ret < 0) {
@@ -462,7 +471,6 @@ static int pinnacle_init(const struct device *dev) {
 
     LOG_DBG("Found device with FW ID: 0x%02x, Version: 0x%02x", fw_id[0], fw_id[1]);
 
-    data->in_int = false;
     k_msleep(10);
     ret = pinnacle_write(dev, PINNACLE_STATUS1, 0); // Clear CC
     if (ret < 0) {
@@ -557,9 +565,6 @@ static int pinnacle_init(const struct device *dev) {
 
 #if IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)
     if (IS_ENABLED(CONFIG_INPUT_PINNACLE_POLLING)) {
-        k_work_init_delayable(&data->poll_work, pinnacle_poll_work);
-        k_work_init(&data->work, pinnacle_work_cb);
-
         pinnacle_write(dev, PINNACLE_FEED_CFG1, feed_cfg1);
 
         set_int(dev, true);
@@ -579,8 +584,6 @@ static int pinnacle_init(const struct device *dev) {
         LOG_ERR("Failed to set DR callback: %d", ret);
         return -EIO;
     }
-
-    k_work_init(&data->work, pinnacle_work_cb);
 
     pinnacle_write(dev, PINNACLE_FEED_CFG1, feed_cfg1);
 
